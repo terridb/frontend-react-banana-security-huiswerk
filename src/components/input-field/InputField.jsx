@@ -1,4 +1,4 @@
-function InputField({type, name, title}) {
+function InputField({type, name, title, onChange}) {
     return (
         <label htmlFor={name}>
             {title}
@@ -6,6 +6,7 @@ function InputField({type, name, title}) {
                 type={type}
                 name={name}
                 placeholder={title}
+                onChange={onChange}
             />
         </label>
     );

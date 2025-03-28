@@ -1,10 +1,11 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {AuthContext} from "../context/AuthContext";
 import InputField from "../components/input-field/InputField";
 
 function SignIn() {
-    const {isAuth, login, logout} = useContext(AuthContext);
+    const {login} = useContext(AuthContext);
+    const [emailValue, setEmailValue] = useState('');
 
     return (
         <>
@@ -17,6 +18,8 @@ function SignIn() {
                     type="email"
                     name="email-field"
                     title="E-mail"
+                    value={emailValue}
+                    onChange={(e) => setEmailValue(e.target.value)}
                 />
                 <InputField
                     type="password"
@@ -24,7 +27,7 @@ function SignIn() {
                     title="Wachtwoord"
                 />
                 <button
-                    onClick={login}
+                    onClick={() => login(emailValue)}
                     type="button"
                 >
                     Inloggen
