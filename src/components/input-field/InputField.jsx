@@ -1,12 +1,12 @@
-function InputField({type, name, title, onChange}) {
+function InputField({ type, name, title, register }) {
     return (
         <label htmlFor={name}>
             {title}
             <input
                 type={type}
-                name={name}
+                {...register(name)}
                 placeholder={title}
-                onChange={onChange}
+                id={name}
             />
         </label>
     );

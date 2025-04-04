@@ -21,7 +21,7 @@ function NavBar() {
             <div>
                 {isAuth ? (
                     <div className="nav-right-wrapper">
-                        <p>{user}</p>
+                        <p>{user.username}</p>
                         <button
                             type="button"
                             onClick={logout}
