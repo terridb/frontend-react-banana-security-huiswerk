@@ -10,12 +10,11 @@ function SignIn() {
     const {register, handleSubmit} = useForm();
 
     const handleLogin = async (data) => {
-        const controller = new AbortController();
         try {
             const response = await axios.post("http://localhost:3000/login", {
                 email: data.email,
                 password: data.password,
-            }, { signal: controller.signal });
+            });
             if (response.status === 200) {
                 login(response.data.accessToken);
             }

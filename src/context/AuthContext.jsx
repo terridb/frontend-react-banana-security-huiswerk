@@ -26,6 +26,7 @@ function AuthContextProvider({children}) {
     const login = async (jwtToken) => {
         const decodedToken = jwtDecode(jwtToken);
         localStorage.setItem("token", jwtToken);
+
         try {
             const response = await axios.get(
                 `http://localhost:3000/600/users/${decodedToken.sub}`,
@@ -50,6 +51,7 @@ function AuthContextProvider({children}) {
         } finally {
             console.log("De gebruiker is ingelogd!");
         }
+
     }
 
     useEffect(() => {

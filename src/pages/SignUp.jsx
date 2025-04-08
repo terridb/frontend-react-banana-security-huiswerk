@@ -8,17 +8,16 @@ import {AuthContext} from "../context/AuthContext";
 function SignUp() {
     const {register, handleSubmit} = useForm();
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
+    const {login} = useContext(AuthContext);
 
     const handleRegister = async (data) => {
-        const controller = new AbortController();
         try {
             const response = await axios.post("http://localhost:3000/register", {
                 email: data.email,
                 password: data.password,
                 username: data.username,
-            }, { signal: controller.signal });
-            if (response.status === 200) {
+            });
+            if (response.status === 201) {
                 login(response.data.accessToken);
             }
         } catch (err) {
